@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    </style>
+<script>
+function reqListener () {
+  console.log(this.responseText);
+}
+function schalt (BackFor) {
+        var Which = WhichChecked("r1")
+        var oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", reqListener);
+        oReq.open("GET", "/"+BackFor +"/"+Which);
+        oReq.send();
+}
+
+
+function WhichChecked(radiogroup) {
+  var ele = document.getElementsByName(radiogroup);
+
+            for(i = 0; i < ele.length; i++) {
+                if(ele[i].checked) {break;}
+
+            }
+            return(ele[i].value)
+}
+
+
+</script>
+
+</head>
+<body>
+
+<h2>Projektwoche Kybernetik</h2>
+<div>
+  <label class="container">
+    <input type="radio" name="r1" value="Motor1"/>
+    Motor 1
+  </label>
+</div>
+
+<div>
+  <label class="container">
+    <input type="radio" name="r1" value="Motor2">
+    Motor 2
+  </label>
+</div>
+
+<div>
+  <label class="container">
+    <input type="radio" name="r1" value="Both">
+   Beide 
+  </label>
+</div>
+
+
+<div>
+<button type="button" onclick="schalt('Forward')">Motor Vorwärts</button>
+<button type="button" onclick="schalt('Back')">Motor Rückwärts</button>
+<button type="button" onclick="schalt('Stop')">Motor Stop</button>
+</div>
+
+
+
+
+
+
+</body>
+</html>
